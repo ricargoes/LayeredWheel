@@ -2,46 +2,56 @@
 
 [ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="1_xlegt"]
 [ext_resource type="PackedScene" uid="uid://c52axfdqsgime" path="res://src/characters/wheel.tscn" id="2_0qwtu"]
+[ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_0qwtu"]
 
 [node name="World" type="Node2D" unique_id=269513847]
 
 [node name="Ground" type="Node2D" parent="." unique_id=336443981]
 
 [node name="Platform" parent="Ground" unique_id=801414866 instance=ExtResource("1_xlegt")]
-position = Vector2(53, 618)
+position = Vector2(164, 991)
 
 [node name="Platform2" parent="Ground" unique_id=1313682639 instance=ExtResource("1_xlegt")]
-position = Vector2(148, 618)
+position = Vector2(1459, 991)
 
 [node name="Platform3" parent="Ground" unique_id=1029616316 instance=ExtResource("1_xlegt")]
-position = Vector2(243, 618)
+position = Vector2(354, 991)
 
 [node name="Platform4" parent="Ground" unique_id=1743226872 instance=ExtResource("1_xlegt")]
-position = Vector2(329, 618)
+position = Vector2(1160, 991)
 
 [node name="Platform5" parent="Ground" unique_id=1087602410 instance=ExtResource("1_xlegt")]
-position = Vector2(422, 618)
+position = Vector2(869, 991)
 
 [node name="Platform6" parent="Ground" unique_id=2014682857 instance=ExtResource("1_xlegt")]
-position = Vector2(509, 618)
+position = Vector2(620, 991)
 
 [node name="Platform7" parent="Ground" unique_id=969759423 instance=ExtResource("1_xlegt")]
-position = Vector2(509, 388)
+position = Vector2(620, 761)
 
 [node name="Platform11" parent="Ground" unique_id=1932226058 instance=ExtResource("1_xlegt")]
-position = Vector2(588, 388)
+position = Vector2(1693, 761)
 
 [node name="Platform12" parent="Ground" unique_id=1504089302 instance=ExtResource("1_xlegt")]
-position = Vector2(675, 388)
+position = Vector2(786, 761)
 
 [node name="Platform8" parent="Ground" unique_id=367996158 instance=ExtResource("1_xlegt")]
-position = Vector2(416, 388)
+position = Vector2(1392, 761)
 
 [node name="Platform9" parent="Ground" unique_id=987213078 instance=ExtResource("1_xlegt")]
-position = Vector2(324, 388)
+position = Vector2(1091, 761)
 
 [node name="Platform10" parent="Ground" unique_id=1510379824 instance=ExtResource("1_xlegt")]
-position = Vector2(239, 388)
+position = Vector2(350, 761)
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
-position = Vector2(64, 539)
+position = Vector2(175, 912)
+
+[node name="Puddles" type="Node2D" parent="." unique_id=533070988]
+
+[node name="Puddle" parent="Puddles" unique_id=1725656556 instance=ExtResource("3_0qwtu")]
+position = Vector2(495, 990)
+
+[node name="Puddle2" parent="Puddles" unique_id=627847792 instance=ExtResource("3_0qwtu")]
+position = Vector2(777, 990)
+puddle_type = 3

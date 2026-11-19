@@ -9,8 +9,8 @@ var player_speed: int = 500
 @export
 var max_life_points: int = 3
 
-var outer_layer: String = "air"
-var inner_layer: String = "air"
+var outer_layer: GameLibrary.Element = GameLibrary.Element.Air
+var inner_layer: GameLibrary.Element = GameLibrary.Element.Air
 var life_points: float = 50.0
 var enemies_slain: int = 0
 
@@ -45,10 +45,79 @@ func _input(event: InputEvent) -> void:
 		change_layer()
 
 func change_layer() -> void:
+	if outer_layer in GameLibrary.active_elements():
+		return
 	var buffer = outer_layer
 	outer_layer = inner_layer
 	inner_layer = buffer
-	
+
+func get_splashed(element: GameLibrary.Element) -> void:
+	match element:
+		GameLibrary.Element.Water:
+			match outer_layer:
+				GameLibrary.Element.Air, GameLibrary.Element.Water:
+					imbue_layer(GameLibrary.Element.Water)
+				GameLibrary.Element.Oil:
+					imbue_layer(GameLibrary.Element.Oil)
+				GameLibrary.Element.Gravel:
+					imbue_layer(GameLibrary.Element.Mud)
+				GameLibrary.Element.Fire:
+					imbue_layer(GameLibrary.Element.Air)
+				GameLibrary.Element.Electricity, GameLibrary.Element.Mud:
+					shorten_active_layer_lifespan()
+		GameLibrary.Element.Oil:
+			match outer_layer:
+				GameLibrary.Element.Air, GameLibrary.Element.Oil:
+					imbue_layer(GameLibrary.Element.Oil)
+				GameLibrary.Element.Water, GameLibrary.Element.Gravel, GameLibrary.Element.Electricity, GameLibrary.Element.Mud:
+					pass
+				GameLibrary.Element.Fire:
+					lengthen_active_layer_lifespan()
+		GameLibrary.Element.Gravel:
+			match outer_layer:
+				GameLibrary.Element.Air, GameLibrary.Element.Gravel, GameLibrary.Element.Fire:
+					imbue_layer(GameLibrary.Element.Gravel)
+				GameLibrary.Element.Water, GameLibrary.Element.Electricity:
+					imbue_layer(GameLibrary.Element.Mud)
+				GameLibrary.Element.Oil:
+					pass
+				GameLibrary.Element.Mud:
+					shorten_active_layer_lifespan()
+		GameLibrary.Element.Fire:
+			match outer_layer:
+				GameLibrary.Element.Air, GameLibrary.Element.Gravel, GameLibrary.Element.Fire:
+					hurt()
+				GameLibrary.Element.Water, GameLibrary.Element.Electricity:
+					imbue_layer(GameLibrary.Element.Air)
+				GameLibrary.Element.Oil:
+					imbue_layer(GameLibrary.Element.Fire)
+				GameLibrary.Element.Mud:
+					pass
+		GameLibrary.Element.Electricity:
+			match outer_layer:
+				GameLibrary.Element.Air, GameLibrary.Element.Gravel, GameLibrary.Element.Oil, GameLibrary.Element.Fire:
+					hurt()
+				GameLibrary.Element.Water:
+					imbue_layer(GameLibrary.Element.Electricity)
+				GameLibrary.Element.Electricity:
+					lengthen_active_layer_lifespan()
+				GameLibrary.Element.Mud:
+					pass
+
+func shorten_active_layer_lifespan() -> void:
+	$ActiveLayerLifespan.time_left /= 2 
+
+
+func lengthen_active_layer_lifespan() -> void:
+	$ActiveLayerLifespan.time_left *= 1.5
+
+func imbue_layer(element: GameLibrary.Element) -> void:
+	outer_layer = element
+	if element in GameLibrary.active_elements():
+		$ActiveLayerLifespan.start(10)
+	else:
+		$ActiveLayerLifespan.stop()
+
 func hurt(damage: int = 1):
 	life_points -= damage
 	#$UI.sync_life(life_points, max_life_points)

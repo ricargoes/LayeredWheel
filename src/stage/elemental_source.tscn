@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bkimcg61o4n8h"]
+
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_85gyl"]
+[ext_resource type="Script" uid="uid://n1fk3s238oc3" path="res://src/stage/elemental_source.gd" id="1_vfntf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85gyl"]
+size = Vector2(192, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85gyl")
+}],
+"loop": 0,
+"name": &"gravel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85gyl")
+}],
+"loop": 0,
+"name": &"oil",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85gyl")
+}],
+"loop": 0,
+"name": &"water",
+"speed": 5.0
+}]
+
+[node name="ElementalSource" type="Area2D" unique_id=1725656556]
+collision_layer = 0
+script = ExtResource("1_vfntf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2119944439]
+shape = SubResource("RectangleShape2D_85gyl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2024253618]
+position = Vector2(0, 20.000004)
+scale = Vector2(1.5, 0.4)
+sprite_frames = SubResource("SpriteFrames_kvonq")
+animation = &"water"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

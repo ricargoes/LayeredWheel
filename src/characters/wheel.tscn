@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db1carrpqu7ow" path="res://src/characters/wheel.gd" id="1_4ndvc"]
 [ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_ymkgr"]
+[ext_resource type="PackedScene" uid="uid://l0svrmegebof" path="res://src/ui/ui.tscn" id="3_3fmbn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
 animations = [{
@@ -78,3 +79,5 @@ shape = SubResource("CircleShape2D_3uoas")
 
 [node name="ActiveLayerLifespan" type="Timer" parent="." unique_id=468315740]
 one_shot = true
+
+[node name="UI" parent="." unique_id=880718439 instance=ExtResource("3_3fmbn")]

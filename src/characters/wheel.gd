@@ -20,7 +20,7 @@ signal died
 
 func _ready() -> void:
 	life_points = max_life_points
-	#$UI.sync_life(life_points, max_life_points)
+	$UI.initialize(max_life_points)
 
 func _process(delta: float) -> void:
 	velocity.x = player_speed
@@ -120,7 +120,7 @@ func imbue_layer(element: GameLibrary.Element) -> void:
 
 func hurt(damage: int = 1):
 	life_points -= damage
-	#$UI.sync_life(life_points, max_life_points)
+	$UI.sync_life(life_points, max_life_points)
 	if life_points <= 0:
 		die()
 

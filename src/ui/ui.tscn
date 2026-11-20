@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://l0svrmegebof"]
+
+[ext_resource type="Script" uid="uid://dse5ouf22fxk8" path="res://src/ui/ui.gd" id="1_qemve"]
+
+[node name="UI" type="CanvasLayer" unique_id=880718439]
+script = ExtResource("1_qemve")
+
+[node name="Health" type="HBoxContainer" parent="." unique_id=1612692993]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 40

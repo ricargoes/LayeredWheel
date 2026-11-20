@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bgaienyjflt48"]
+
+[ext_resource type="Script" uid="uid://xtmofsaqxxj8" path="res://src/side_scroller_camera.gd" id="1_s5qfi"]
+
+[node name="SideScrollerCamera" type="Camera2D" unique_id=335418104 node_paths=PackedStringArray("followee")]
+script = ExtResource("1_s5qfi")
+followee = NodePath("")

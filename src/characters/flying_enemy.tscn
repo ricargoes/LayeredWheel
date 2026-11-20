@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bkttgdticlx82"]
+
+[ext_resource type="Script" uid="uid://jc2r5otsd3rf" path="res://src/characters/enemy.gd" id="1_doobi"]
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="2_x2nfq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x2nfq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uoas"]
+size = Vector2(90, 88)
+
+[node name="FlyingEnemy" type="Area2D" unique_id=527522406]
+collision_layer = 0
+script = ExtResource("1_doobi")
+does_fly = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=669209388]
+self_modulate = Color(0.8420999, 0, 0.20929366, 1)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_kvonq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=625893164]
+shape = SubResource("RectangleShape2D_3uoas")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

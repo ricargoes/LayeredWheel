@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c52axfdqsgime" path="res://src/characters/wheel.tscn" id="2_0qwtu"]
 [ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_0qwtu"]
 [ext_resource type="Script" uid="uid://xtmofsaqxxj8" path="res://src/side_scroller_camera.gd" id="4_t101k"]
+[ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="5_36ipd"]
+[ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_usxdn"]
 
 [node name="World" type="Node2D" unique_id=269513847]
 
@@ -28,25 +30,29 @@ position = Vector2(869, 991)
 position = Vector2(620, 991)
 
 [node name="Platform7" parent="Ground" unique_id=969759423 instance=ExtResource("1_xlegt")]
-position = Vector2(620, 761)
+position = Vector2(620, 708)
 
 [node name="Platform11" parent="Ground" unique_id=1932226058 instance=ExtResource("1_xlegt")]
-position = Vector2(1693, 761)
+position = Vector2(1693, 708)
 
 [node name="Platform12" parent="Ground" unique_id=1504089302 instance=ExtResource("1_xlegt")]
-position = Vector2(786, 761)
+position = Vector2(786, 708)
 
 [node name="Platform8" parent="Ground" unique_id=367996158 instance=ExtResource("1_xlegt")]
-position = Vector2(1392, 761)
+position = Vector2(1392, 708)
 
 [node name="Platform9" parent="Ground" unique_id=987213078 instance=ExtResource("1_xlegt")]
-position = Vector2(1091, 761)
+position = Vector2(1091, 708)
 
 [node name="Platform10" parent="Ground" unique_id=1510379824 instance=ExtResource("1_xlegt")]
-position = Vector2(350, 761)
+position = Vector2(350, 708)
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
 position = Vector2(175, 912)
+
+[node name="SideScrollerCamera" type="Camera2D" parent="." unique_id=1566799038 node_paths=PackedStringArray("followee")]
+script = ExtResource("4_t101k")
+followee = NodePath("../Wheel")
 
 [node name="Puddles" type="Node2D" parent="." unique_id=533070988]
 
@@ -55,7 +61,15 @@ position = Vector2(495, 990)
 
 [node name="Puddle2" parent="Puddles" unique_id=627847792 instance=ExtResource("3_0qwtu")]
 position = Vector2(777, 990)
+type = 2
 
-[node name="SideScrollerCamera" type="Camera2D" parent="." unique_id=1566799038 node_paths=PackedStringArray("followee")]
-script = ExtResource("4_t101k")
-followee = NodePath("../Wheel")
+[node name="Enemies" type="Node2D" parent="." unique_id=485325726]
+
+[node name="StandingEnemy" parent="Enemies" unique_id=527522406 instance=ExtResource("5_36ipd")]
+position = Vector2(1408, 858)
+
+[node name="FlyingEnemy" parent="Enemies" unique_id=2072658663 instance=ExtResource("6_usxdn")]
+position = Vector2(1211, 562)
+
+[node name="FlyingEnemy2" parent="Enemies" unique_id=1883505456 instance=ExtResource("6_usxdn")]
+position = Vector2(1630, 270)

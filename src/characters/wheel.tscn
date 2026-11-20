@@ -77,3 +77,4 @@ animation = &"air_layer"
 shape = SubResource("CircleShape2D_3uoas")
 
 [node name="ActiveLayerLifespan" type="Timer" parent="." unique_id=468315740]
+one_shot = true

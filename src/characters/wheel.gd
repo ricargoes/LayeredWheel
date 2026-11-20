@@ -1,6 +1,6 @@
-extends CharacterBody2D
+class_name Wheel extends CharacterBody2D
 
-const JUMP_FORCE = 9000
+const JUMP_FORCE = 10000
 const MAX_JUMP_IMPULSE_TIME: float = 0.2
 
 @export

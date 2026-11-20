@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bgaienyjflt48" path="res://src/side_scroller_camera.tscn" id="3_usxdn"]
 [ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="5_36ipd"]
 [ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_usxdn"]
+[ext_resource type="PackedScene" uid="uid://bp1nqua6noncu" path="res://src/stage/plasma_barrier.tscn" id="9_tnjnu"]
+[ext_resource type="PackedScene" uid="uid://cb3jsm0lixdhb" path="res://src/stage/switch.tscn" id="10_8e6n3"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
 scenes/1/scene = ExtResource("2_jvefd")
@@ -37,16 +39,16 @@ texture = ExtResource("1_53egh")
 
 [node name="Ground" type="TileMapLayer" parent="Ground" unique_id=1783909370]
 position = Vector2(0, 100)
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASA=")
 tile_set = SubResource("TileSet_kvonq")
 
 [node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=924221852]
 position = Vector2(0, 100)
-tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgAIAAQAAAAAAAAAAgAJAAQAAAAAAAAAAgAKAAQAAAAAAAAAAgA=")
 tile_set = SubResource("TileSet_tnjnu")
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
-position = Vector2(153, 868)
+position = Vector2(-147, 863)
 
 [node name="SideScrollerCamera" parent="." unique_id=335418104 node_paths=PackedStringArray("followee") instance=ExtResource("3_usxdn")]
 followee = NodePath("../Wheel")
@@ -70,3 +72,12 @@ position = Vector2(1211, 562)
 
 [node name="FlyingEnemy2" parent="Enemies" unique_id=1883505456 instance=ExtResource("6_usxdn")]
 position = Vector2(1630, 270)
+
+[node name="Hazards" type="Node2D" parent="." unique_id=585916694]
+
+[node name="PlasmaBarrier" parent="Hazards" unique_id=1195784503 instance=ExtResource("9_tnjnu")]
+position = Vector2(1968, 384)
+
+[node name="Switch" parent="Hazards" unique_id=1885685938 node_paths=PackedStringArray("connected_actuator") instance=ExtResource("10_8e6n3")]
+position = Vector2(1744, 264)
+connected_actuator = NodePath("../PlasmaBarrier")

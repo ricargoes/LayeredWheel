@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bp1nqua6noncu"]
+
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_a7nrt"]
+[ext_resource type="Script" uid="uid://0yk3j4hldsa6" path="res://src/stage/plasma_barrier.gd" id="1_wu7va"]
+[ext_resource type="Texture2D" uid="uid://blp4pent1cod3" path="res://assets/sprites/bola.png" id="2_dw5h2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uoas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dw5h2")
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a7nrt")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvonq"]
+size = Vector2(12, 384)
+
+[node name="PlasmaBarrier" type="Area2D" unique_id=1195784503]
+collision_layer = 0
+script = ExtResource("1_wu7va")
+
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=127230537]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -192)
+scale = Vector2(0.1, 3)
+sprite_frames = SubResource("SpriteFrames_3uoas")
+animation = &"off"
+autoplay = "on"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1875880979]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_kvonq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

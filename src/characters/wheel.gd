@@ -107,11 +107,10 @@ func get_splashed(element: GameLibrary.Element) -> void:
 					pass
 
 func shorten_active_layer_lifespan() -> void:
-	$ActiveLayerLifespan.time_left /= 2 
-
+	$ActiveLayerLifespan.start($ActiveLayerLifespan.time_left/2)
 
 func lengthen_active_layer_lifespan() -> void:
-	$ActiveLayerLifespan.time_left *= 1.5
+	$ActiveLayerLifespan.start($ActiveLayerLifespan.time_left*1.5)
 
 func imbue_layer(element: GameLibrary.Element) -> void:
 	outer_layer = element

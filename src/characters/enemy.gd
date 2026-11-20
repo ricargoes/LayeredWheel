@@ -12,7 +12,10 @@ func _ready() -> void:
 	flying_speed = (0.8 + 0.4*randf())*base_flying_speed
 
 func _on_body_entered(body: Wheel) -> void:
-	if body.outer_layer in [GameLibrary.Element.Fire, GameLibrary.Element.Electricity]:
+	if body.outer_layer == GameLibrary.Element.Fire:
+		die()
+	elif body.outer_layer == GameLibrary.Element.Electricity:
+		body.shorten_active_layer_lifespan()
 		die()
 	else:
 		body.hurt()

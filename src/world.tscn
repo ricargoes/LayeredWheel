@@ -1,54 +1,52 @@
-[gd_scene format=3 uid="uid://cpfqmpghupmrk"]
+[gd_scene format=4 uid="uid://cpfqmpghupmrk"]
 
+[ext_resource type="Texture2D" uid="uid://sa8d8q7vpe4l" path="res://assets/sprites/fondo.png" id="1_53egh"]
 [ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="1_xlegt"]
 [ext_resource type="PackedScene" uid="uid://c52axfdqsgime" path="res://src/characters/wheel.tscn" id="2_0qwtu"]
+[ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="2_jvefd"]
 [ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_0qwtu"]
 [ext_resource type="PackedScene" uid="uid://bgaienyjflt48" path="res://src/side_scroller_camera.tscn" id="3_usxdn"]
 [ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="5_36ipd"]
 [ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_usxdn"]
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
+scenes/1/scene = ExtResource("2_jvefd")
+
+[sub_resource type="TileSet" id="TileSet_kvonq"]
+tile_size = Vector2i(256, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_53egh")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dotkg"]
+scenes/2/scene = ExtResource("1_xlegt")
+
+[sub_resource type="TileSet" id="TileSet_tnjnu"]
+tile_size = Vector2i(256, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_dotkg")
+
 [node name="World" type="Node2D" unique_id=269513847]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1638107190]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(512, 512)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1734675367]
+texture = ExtResource("1_53egh")
 
 [node name="Ground" type="Node2D" parent="." unique_id=336443981]
 
-[node name="Platform" parent="Ground" unique_id=801414866 instance=ExtResource("1_xlegt")]
-position = Vector2(164, 991)
+[node name="Ground" type="TileMapLayer" parent="Ground" unique_id=1783909370]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_kvonq")
 
-[node name="Platform2" parent="Ground" unique_id=1313682639 instance=ExtResource("1_xlegt")]
-position = Vector2(1459, 991)
-
-[node name="Platform3" parent="Ground" unique_id=1029616316 instance=ExtResource("1_xlegt")]
-position = Vector2(354, 991)
-
-[node name="Platform4" parent="Ground" unique_id=1743226872 instance=ExtResource("1_xlegt")]
-position = Vector2(1160, 991)
-
-[node name="Platform5" parent="Ground" unique_id=1087602410 instance=ExtResource("1_xlegt")]
-position = Vector2(869, 991)
-
-[node name="Platform6" parent="Ground" unique_id=2014682857 instance=ExtResource("1_xlegt")]
-position = Vector2(620, 991)
-
-[node name="Platform7" parent="Ground" unique_id=969759423 instance=ExtResource("1_xlegt")]
-position = Vector2(620, 708)
-
-[node name="Platform11" parent="Ground" unique_id=1932226058 instance=ExtResource("1_xlegt")]
-position = Vector2(1693, 708)
-
-[node name="Platform12" parent="Ground" unique_id=1504089302 instance=ExtResource("1_xlegt")]
-position = Vector2(786, 708)
-
-[node name="Platform8" parent="Ground" unique_id=367996158 instance=ExtResource("1_xlegt")]
-position = Vector2(1392, 708)
-
-[node name="Platform9" parent="Ground" unique_id=987213078 instance=ExtResource("1_xlegt")]
-position = Vector2(1091, 708)
-
-[node name="Platform10" parent="Ground" unique_id=1510379824 instance=ExtResource("1_xlegt")]
-position = Vector2(350, 708)
+[node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=924221852]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_tnjnu")
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
-position = Vector2(175, 912)
+position = Vector2(153, 868)
 
 [node name="SideScrollerCamera" parent="." unique_id=335418104 node_paths=PackedStringArray("followee") instance=ExtResource("3_usxdn")]
 followee = NodePath("../Wheel")

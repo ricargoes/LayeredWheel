@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://c52axfdqsgime"]
 
 [ext_resource type="Script" uid="uid://db1carrpqu7ow" path="res://src/characters/wheel.gd" id="1_4ndvc"]
-[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_ymkgr"]
+[ext_resource type="Texture2D" uid="uid://kiwumhgi8ubk" path="res://assets/sprites/personaje.png" id="2_3fmbn"]
 [ext_resource type="PackedScene" uid="uid://l0svrmegebof" path="res://src/ui/ui.tscn" id="3_3fmbn"]
+[ext_resource type="Texture2D" uid="uid://blp4pent1cod3" path="res://assets/sprites/bola.png" id="3_jmtn7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ymkgr")
+"texture": ExtResource("2_3fmbn")
 }],
 "loop": 1,
 "name": &"jump",
@@ -16,7 +17,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ymkgr")
+"texture": ExtResource("2_3fmbn")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjyop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jmtn7")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jmtn7")
 }],
 "loop": 1,
 "name": &"run",
@@ -24,7 +44,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlegt"]
-size = Vector2(128, 128)
+size = Vector2(138, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ndvc"]
 animations = [{
@@ -50,15 +70,21 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3uoas"]
-radius = 109.11462
+radius = 200.24985
 
 [node name="Wheel" type="CharacterBody2D" unique_id=1984499010]
 collision_mask = 6
 script = ExtResource("1_4ndvc")
 
-[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=1942834822]
+[node name="Platypus" type="AnimatedSprite2D" parent="." unique_id=1942834822]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_kvonq")
 animation = &"jump"
+
+[node name="Wheel" type="AnimatedSprite2D" parent="." unique_id=1505922189]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_kjyop")
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=264570256]
 shape = SubResource("RectangleShape2D_xlegt")

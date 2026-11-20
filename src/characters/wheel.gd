@@ -25,10 +25,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	velocity.x = player_speed
 	if is_on_floor():
-		$Anim.animation = "run"
+		$Wheel.animation = "run"
+		$Platypus.animation = "run"
 		jump_impulse_time = MAX_JUMP_IMPULSE_TIME
 	else:
-		$Anim.animation = "jump"
+		$Wheel.animation = "jump"
+		$Platypus.animation = "jump"
 		jump_impulse_time -= delta
 		velocity.y += delta*GameLibrary.GRAVITY
 	

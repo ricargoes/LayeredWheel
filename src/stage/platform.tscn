@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://paasf2u0keqv"]
 
-[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_2bcjr"]
+[ext_resource type="Texture2D" uid="uid://blutcraw3n2ju" path="res://assets/sprites/plataforma.png" id="1_2bcjr"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_kvonq"]
-a = Vector2(-150, 0)
-b = Vector2(150, 0)
+a = Vector2(-128, 0)
+b = Vector2(128, 0)
 
 [node name="Platform" type="StaticBody2D" unique_id=801414866]
 collision_layer = 2
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1728323473]
-scale = Vector2(2.4, 0.05)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_2bcjr")
+offset = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2044547578]
+position = Vector2(0, -32)
 shape = SubResource("SegmentShape2D_kvonq")
 one_way_collision = true

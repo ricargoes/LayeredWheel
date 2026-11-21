@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://d3j7ud313rdnw"]
+
+[ext_resource type="Script" uid="uid://c2tq0wmps36ye" path="res://src/ui/end_screens.gd" id="1_yevg0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yevg0"]
+bg_color = Color(0.94589096, 4.1392445e-06, 0.5931776, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.99999994, 0.06779961, 0.1842623, 1)
+border_blend = true
+
+[node name="EndScreens" type="CanvasLayer" unique_id=1070660170]
+process_mode = 3
+script = ExtResource("1_yevg0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=486693195]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85882354)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect" unique_id=1152533081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer" unique_id=2100987131]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Text" type="Label" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1971231221]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer" unique_id=1997206192]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="Resume" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1711115911]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_yevg0")
+text = "Resume"
+
+[node name="Retry" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=2031858963]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_yevg0")
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer" unique_id=9015254]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_yevg0")
+text = "Main Menu"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

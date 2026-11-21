@@ -65,6 +65,10 @@ position = Vector2(495, 990)
 position = Vector2(777, 990)
 type = 2
 
+[node name="Puddle4" parent="Puddles" unique_id=1831401049 instance=ExtResource("3_0qwtu")]
+position = Vector2(1035, 993)
+type = 4
+
 [node name="Puddle3" parent="Puddles" unique_id=1967219508 instance=ExtResource("3_0qwtu")]
 position = Vector2(1798, 987)
 type = 3

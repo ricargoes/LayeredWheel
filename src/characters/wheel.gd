@@ -18,9 +18,20 @@ var enemies_slain: int = 0
 
 var jump_impulse_time: float = 0.0
 
+var ELEMENT_ANIM_NAME = {
+	GameLibrary.Element.Air: "air_layer",
+	GameLibrary.Element.Water: "water_layer",
+	GameLibrary.Element.Oil: "oil_layer",
+	GameLibrary.Element.Gravel: "gravel_layer",
+	GameLibrary.Element.Electricity: "electricity_layer",
+	GameLibrary.Element.Fire: "fire_layer",
+	GameLibrary.Element.Mud: "mud_layer",
+}
+
 signal died(points: int)
 
 func _ready() -> void:
+	change_layer()
 	life_points = max_life_points
 	$UI.initialize(max_life_points, points)
 
@@ -53,7 +64,10 @@ func change_layer() -> void:
 		return
 	var buffer = outer_layer
 	outer_layer = inner_layer
+	$Layers/OuterLayerSprite.animation = ELEMENT_ANIM_NAME[outer_layer]
 	inner_layer = buffer
+	$Layers/InnerLayerSprite.animation = ELEMENT_ANIM_NAME[inner_layer]
+	
 
 func get_splashed(element: GameLibrary.Element) -> void:
 	match element:
@@ -116,6 +130,7 @@ func lengthen_active_layer_lifespan() -> void:
 
 func imbue_layer(element: GameLibrary.Element) -> void:
 	outer_layer = element
+	$Layers/OuterLayerSprite.animation = ELEMENT_ANIM_NAME[outer_layer]
 	if element in GameLibrary.active_elements():
 		$ActiveLayerLifespan.start(10)
 	else:

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgukodaqw7o2y"]
+
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_ccj0r"]
+[ext_resource type="Script" uid="uid://chthro77odf3t" path="res://src/stage/coin.gd" id="1_hxll2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg213"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ccj0r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvonq"]
+size = Vector2(52, 52)
+
+[node name="Coin" type="Area2D" unique_id=987083466]
+collision_layer = 0
+script = ExtResource("1_hxll2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1952731497]
+self_modulate = Color(0.7496641, 0.4681136, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_pg213")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657958901]
+shape = SubResource("RectangleShape2D_kvonq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

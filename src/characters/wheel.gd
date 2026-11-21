@@ -9,6 +9,8 @@ var player_speed: int = 500
 @export
 var max_life_points: int = 3
 
+var points: int = 0
+
 var outer_layer: GameLibrary.Element = GameLibrary.Element.Air
 var inner_layer: GameLibrary.Element = GameLibrary.Element.Air
 var life_points: float = 50.0
@@ -16,11 +18,11 @@ var enemies_slain: int = 0
 
 var jump_impulse_time: float = 0.0
 
-signal died
+signal died(points: int)
 
 func _ready() -> void:
 	life_points = max_life_points
-	$UI.initialize(max_life_points)
+	$UI.initialize(max_life_points, points)
 
 func _process(delta: float) -> void:
 	velocity.x = player_speed
@@ -119,11 +121,16 @@ func imbue_layer(element: GameLibrary.Element) -> void:
 	else:
 		$ActiveLayerLifespan.stop()
 
+func score(value: int) -> void:
+	points = max(0, points + value)
+	$UI.sync_points(points)
+
 func hurt(damage: int = 1):
 	life_points -= damage
+	score(-5)
 	$UI.sync_life(life_points, max_life_points)
 	if life_points <= 0:
 		die()
 
 func die():
-	died.emit()
+	died.emit(points)

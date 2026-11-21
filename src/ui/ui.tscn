@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://l0svrmegebof"]
 
 [ext_resource type="Script" uid="uid://dse5ouf22fxk8" path="res://src/ui/ui.gd" id="1_qemve"]
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="2_jlntk"]
 
 [node name="UI" type="CanvasLayer" unique_id=880718439]
 script = ExtResource("1_qemve")
@@ -11,3 +12,28 @@ custom_minimum_size = Vector2(0, 100)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 40
+
+[node name="Points" type="HBoxContainer" parent="." unique_id=1684041249]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_constants/separation = 40
+
+[node name="TextureRect" type="TextureRect" parent="Points" unique_id=525324914]
+self_modulate = Color(0.71014214, 0.3973866, 0.006385603, 1)
+layout_mode = 2
+texture = ExtResource("2_jlntk")
+
+[node name="Score" type="Label" parent="Points" unique_id=856031370]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "128"
+horizontal_alignment = 1
+vertical_alignment = 1

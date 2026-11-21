@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="2_jvefd"]
 [ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_0qwtu"]
 [ext_resource type="PackedScene" uid="uid://bgaienyjflt48" path="res://src/side_scroller_camera.tscn" id="3_usxdn"]
+[ext_resource type="PackedScene" uid="uid://dmt0bs2gy5qbm" path="res://src/stage/exit.tscn" id="4_5xesp"]
 [ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="5_36ipd"]
 [ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_usxdn"]
 [ext_resource type="PackedScene" uid="uid://bp1nqua6noncu" path="res://src/stage/plasma_barrier.tscn" id="9_tnjnu"]
@@ -42,13 +43,16 @@ texture = ExtResource("1_53egh")
 
 [node name="Ground" type="TileMapLayer" parent="Ground" unique_id=1783909370]
 position = Vector2(0, 100)
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASA=")
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQANAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQAQAAcAAAAAAAAAAQARAAcAAAAAAAAAAQASAAcAAAAAAAAAAQATAAcAAAAAAAAAAQALAP//AAAAAAAAASAMAP//AAAAAAAAASANAP//AAAAAAAAASAOAP//AAAAAAAAASAPAP//AAAAAAAAASAQAP//AAAAAAAAASARAP//AAAAAAAAASASAP//AAAAAAAAASATAP//AAAAAAAAASA=")
 tile_set = SubResource("TileSet_kvonq")
 
 [node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=924221852]
 position = Vector2(0, 100)
 tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgAIAAQAAAAAAAAAAgAJAAQAAAAAAAAAAgAKAAQAAAAAAAAAAgAHAAkAAAAAAAAAAgAIAAkAAAAAAAAAAgAJAAkAAAAAAAAAAgA=")
 tile_set = SubResource("TileSet_tnjnu")
+
+[node name="Exit" parent="Ground" unique_id=1195784503 instance=ExtResource("4_5xesp")]
+position = Vector2(4343, 992)
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
 position = Vector2(-147, 863)
@@ -86,7 +90,7 @@ position = Vector2(1630, 270)
 
 [node name="Hazards" type="Node2D" parent="." unique_id=585916694]
 
-[node name="PlasmaBarrier" parent="Hazards" unique_id=1195784503 instance=ExtResource("9_tnjnu")]
+[node name="PlasmaBarrier" parent="Hazards" unique_id=1232104789 instance=ExtResource("9_tnjnu")]
 position = Vector2(1968, 384)
 
 [node name="Switch" parent="Hazards" unique_id=1885685938 node_paths=PackedStringArray("connected_actuator") instance=ExtResource("10_8e6n3")]
@@ -138,3 +142,4 @@ position = Vector2(1248, 221)
 visible = false
 
 [connection signal="died" from="Wheel" to="EndScreens" method="defeat"]
+[connection signal="won" from="Wheel" to="EndScreens" method="victory"]

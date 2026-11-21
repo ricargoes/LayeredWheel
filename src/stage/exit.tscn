@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dmt0bs2gy5qbm"]
+
+[ext_resource type="Script" uid="uid://d2umv2rhjo5tq" path="res://src/stage/exit.gd" id="1_vqqrt"]
+[ext_resource type="Texture2D" uid="uid://blp4pent1cod3" path="res://assets/sprites/bola.png" id="2_aog46"]
+[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="3_pwyru"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3uoas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aog46")
+}],
+"loop": 1,
+"name": &"breaking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pwyru")
+}],
+"loop": 1,
+"name": &"rest",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvonq"]
+size = Vector2(100, 256)
+
+[node name="Exit" type="Area2D" unique_id=1195784503]
+collision_layer = 0
+script = ExtResource("1_vqqrt")
+
+[node name="Anim" type="AnimatedSprite2D" parent="." unique_id=127230537]
+modulate = Color(0.46524566, 0.6984228, 7.70092e-07, 1)
+position = Vector2(0, -128)
+scale = Vector2(0.8, 2)
+sprite_frames = SubResource("SpriteFrames_3uoas")
+animation = &"rest"
+autoplay = "rest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1875880979]
+position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_kvonq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

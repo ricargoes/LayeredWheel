@@ -29,6 +29,7 @@ var ELEMENT_ANIM_NAME = {
 }
 
 signal died(points: int)
+signal won(points: int)
 
 func _ready() -> void:
 	change_layer()
@@ -140,12 +141,16 @@ func score(value: int) -> void:
 	points = max(0, points + value)
 	$UI.sync_points(points)
 
-func hurt(damage: int = 1):
+func hurt(damage: int = 1) -> void:
 	life_points -= damage
 	score(-5)
 	$UI.sync_life(life_points, max_life_points)
 	if life_points <= 0:
 		die()
 
-func die():
+func die() -> void:
 	died.emit(points)
+
+func victory() -> void:
+	score(15)
+	won.emit(points)

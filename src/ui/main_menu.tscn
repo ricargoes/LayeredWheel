@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://74c2bho4ye01"]
+
+[ext_resource type="Script" uid="uid://crira7cmlqd6m" path="res://src/ui/main_menu.gd" id="1_qkuje"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yevg0"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7074423, 0.36678398, 6.738305e-07, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkuje"]
+bg_color = Color(0.94589096, 4.1392445e-06, 0.5931776, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.99999994, 0.06779961, 0.1842623, 1)
+border_blend = true
+
+[node name="MainMenu" type="CenterContainer" unique_id=617585641]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qkuje")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=986700580]
+custom_minimum_size = Vector2(1300, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=14430486]
+layout_mode = 2
+
+[node name="Intro" type="Label" parent="VBoxContainer" unique_id=585720151]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "The scientist have understimated you and you have taken advantage of a slip. Stealing the Orbinator 3000 and its layers technology is your best bet to escape. It allows yo to store up to 2 layers of matter which you can use to take your bill to the exit."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="Controls" type="Label" parent="VBoxContainer" unique_id=107814330]
+custom_minimum_size = Vector2(400, 0)
+custom_maximum_size = Vector2(850, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_yevg0")
+text = "SPACE -> Jump
+C -> Change active (outer) layer
+ESC -> Pause
+
+Diferent types of layers can sort diferent obstacles and layers can be combined (e.g. Oil layer + Fire = Fire layer)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="StartGame" type="Button" parent="VBoxContainer" unique_id=1683812571]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qkuje")
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=888972857]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qkuje")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

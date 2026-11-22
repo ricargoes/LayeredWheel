@@ -12,6 +12,22 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_85gyl")
 }],
+"loop": 1,
+"name": &"cable",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85gyl")
+}],
+"loop": 1,
+"name": &"flame",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85gyl")
+}],
 "loop": 0,
 "name": &"gravel",
 "speed": 5.0
@@ -44,6 +60,6 @@ shape = SubResource("RectangleShape2D_85gyl")
 position = Vector2(0, 20.000004)
 scale = Vector2(1.5, 0.4)
 sprite_frames = SubResource("SpriteFrames_kvonq")
-animation = &"water"
+animation = &"gravel"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,35 +1,21 @@
-[gd_scene format=4 uid="uid://cpfqmpghupmrk"]
+[gd_scene format=3 uid="uid://cpfqmpghupmrk"]
 
 [ext_resource type="Texture2D" uid="uid://sa8d8q7vpe4l" path="res://assets/sprites/fondo.png" id="1_53egh"]
-[ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="1_xlegt"]
+[ext_resource type="Script" uid="uid://cx2motmk4o17v" path="res://src/world.gd" id="1_usxdn"]
 [ext_resource type="PackedScene" uid="uid://c52axfdqsgime" path="res://src/characters/wheel.tscn" id="2_0qwtu"]
-[ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="2_jvefd"]
-[ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_0qwtu"]
 [ext_resource type="PackedScene" uid="uid://bgaienyjflt48" path="res://src/side_scroller_camera.tscn" id="3_usxdn"]
-[ext_resource type="PackedScene" uid="uid://dmt0bs2gy5qbm" path="res://src/stage/exit.tscn" id="4_5xesp"]
-[ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="5_36ipd"]
-[ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_usxdn"]
-[ext_resource type="PackedScene" uid="uid://bp1nqua6noncu" path="res://src/stage/plasma_barrier.tscn" id="9_tnjnu"]
-[ext_resource type="PackedScene" uid="uid://cb3jsm0lixdhb" path="res://src/stage/switch.tscn" id="10_8e6n3"]
-[ext_resource type="PackedScene" uid="uid://b0ybvbdp0bwj5" path="res://src/stage/glass_door.tscn" id="11_8e6n3"]
-[ext_resource type="PackedScene" uid="uid://cgukodaqw7o2y" path="res://src/stage/coin.tscn" id="12_eemcn"]
+[ext_resource type="PackedScene" uid="uid://dyun41jjgygjd" path="res://src/stage/chunks/terrain_chunk_relaxed.tscn" id="5_usxdn"]
 [ext_resource type="PackedScene" uid="uid://d3j7ud313rdnw" path="res://src/ui/end_screens.tscn" id="13_njovb"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
-scenes/1/scene = ExtResource("2_jvefd")
-
-[sub_resource type="TileSet" id="TileSet_kvonq"]
-tile_size = Vector2i(256, 128)
-sources/0 = SubResource("TileSetScenesCollectionSource_53egh")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dotkg"]
-scenes/2/scene = ExtResource("1_xlegt")
-
-[sub_resource type="TileSet" id="TileSet_tnjnu"]
-tile_size = Vector2i(256, 64)
-sources/0 = SubResource("TileSetScenesCollectionSource_dotkg")
-
 [node name="World" type="Node2D" unique_id=269513847]
+script = ExtResource("1_usxdn")
+world_size_in_chunks = 2
+
+[node name="SideScrollerCamera" parent="." unique_id=335418104 node_paths=PackedStringArray("followee") instance=ExtResource("3_usxdn")]
+followee = NodePath("../Wheel")
+
+[node name="EndScreens" parent="." unique_id=1070660170 instance=ExtResource("13_njovb")]
+visible = false
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1638107190]
 scroll_scale = Vector2(0.9, 0.9)
@@ -39,107 +25,12 @@ repeat_times = 9
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1734675367]
 texture = ExtResource("1_53egh")
 
-[node name="Ground" type="Node2D" parent="." unique_id=336443981]
+[node name="Chunks" type="Node2D" parent="." unique_id=225911838]
 
-[node name="Ground" type="TileMapLayer" parent="Ground" unique_id=1783909370]
-position = Vector2(0, 100)
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASD/////AAAAAAAAASD+////AAAAAAAAASD9////AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQD//wcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQANAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQAQAAcAAAAAAAAAAQARAAcAAAAAAAAAAQASAAcAAAAAAAAAAQATAAcAAAAAAAAAAQALAP//AAAAAAAAASAMAP//AAAAAAAAASANAP//AAAAAAAAASAOAP//AAAAAAAAASAPAP//AAAAAAAAASAQAP//AAAAAAAAASARAP//AAAAAAAAASASAP//AAAAAAAAASATAP//AAAAAAAAASA=")
-tile_set = SubResource("TileSet_kvonq")
-
-[node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=924221852]
-position = Vector2(0, 100)
-tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgAIAAQAAAAAAAAAAgAJAAQAAAAAAAAAAgAKAAQAAAAAAAAAAgAHAAkAAAAAAAAAAgAIAAkAAAAAAAAAAgAJAAkAAAAAAAAAAgA=")
-tile_set = SubResource("TileSet_tnjnu")
-
-[node name="Exit" parent="Ground" unique_id=1195784503 instance=ExtResource("4_5xesp")]
-position = Vector2(4343, 992)
+[node name="TerrainChunkRelaxed" parent="Chunks" unique_id=546563796 instance=ExtResource("5_usxdn")]
 
 [node name="Wheel" parent="." unique_id=1984499010 instance=ExtResource("2_0qwtu")]
-position = Vector2(-147, 863)
-
-[node name="SideScrollerCamera" parent="." unique_id=335418104 node_paths=PackedStringArray("followee") instance=ExtResource("3_usxdn")]
-followee = NodePath("../Wheel")
-
-[node name="Puddles" type="Node2D" parent="." unique_id=533070988]
-
-[node name="Puddle" parent="Puddles" unique_id=1725656556 instance=ExtResource("3_0qwtu")]
-position = Vector2(495, 990)
-
-[node name="Puddle2" parent="Puddles" unique_id=627847792 instance=ExtResource("3_0qwtu")]
-position = Vector2(777, 990)
-type = 2
-
-[node name="Puddle4" parent="Puddles" unique_id=1831401049 instance=ExtResource("3_0qwtu")]
-position = Vector2(1035, 993)
-type = 4
-
-[node name="Puddle3" parent="Puddles" unique_id=1967219508 instance=ExtResource("3_0qwtu")]
-position = Vector2(1798, 987)
-type = 3
-
-[node name="Enemies" type="Node2D" parent="." unique_id=485325726]
-
-[node name="StandingEnemy" parent="Enemies" unique_id=527522406 instance=ExtResource("5_36ipd")]
-position = Vector2(1408, 858)
-
-[node name="FlyingEnemy" parent="Enemies" unique_id=2072658663 instance=ExtResource("6_usxdn")]
-position = Vector2(1211, 562)
-
-[node name="FlyingEnemy2" parent="Enemies" unique_id=1883505456 instance=ExtResource("6_usxdn")]
-position = Vector2(1630, 270)
-
-[node name="Hazards" type="Node2D" parent="." unique_id=585916694]
-
-[node name="PlasmaBarrier" parent="Hazards" unique_id=1232104789 instance=ExtResource("9_tnjnu")]
-position = Vector2(1968, 384)
-
-[node name="Switch" parent="Hazards" unique_id=1885685938 node_paths=PackedStringArray("connected_actuator") instance=ExtResource("10_8e6n3")]
-position = Vector2(1744, 264)
-connected_actuator = NodePath("../PlasmaBarrier")
-
-[node name="GlassDoor" parent="Hazards" unique_id=37549412 instance=ExtResource("11_8e6n3")]
-position = Vector2(2354, 990)
-
-[node name="Collectables" type="Node2D" parent="." unique_id=1630816799]
-
-[node name="Coin" parent="Collectables" unique_id=987083466 instance=ExtResource("12_eemcn")]
-position = Vector2(360, 854)
-
-[node name="Coin6" parent="Collectables" unique_id=1023871642 instance=ExtResource("12_eemcn")]
-position = Vector2(322, 792)
-
-[node name="Coin5" parent="Collectables" unique_id=903934571 instance=ExtResource("12_eemcn")]
-position = Vector2(276, 853)
-
-[node name="Coin2" parent="Collectables" unique_id=2132074046 instance=ExtResource("12_eemcn")]
-position = Vector2(548, 553)
-
-[node name="Coin7" parent="Collectables" unique_id=2117753524 instance=ExtResource("12_eemcn")]
-position = Vector2(480, 591)
-
-[node name="Coin8" parent="Collectables" unique_id=1231738610 instance=ExtResource("12_eemcn")]
-position = Vector2(611, 598)
-
-[node name="Coin9" parent="Collectables" unique_id=2093194850 instance=ExtResource("12_eemcn")]
-position = Vector2(921, 541)
-
-[node name="Coin10" parent="Collectables" unique_id=423607008 instance=ExtResource("12_eemcn")]
-position = Vector2(853, 589)
-
-[node name="Coin3" parent="Collectables" unique_id=459236074 instance=ExtResource("12_eemcn")]
-position = Vector2(798, 540)
-
-[node name="Coin4" parent="Collectables" unique_id=578499051 instance=ExtResource("12_eemcn")]
-position = Vector2(1201, 267)
-
-[node name="Coin11" parent="Collectables" unique_id=593575384 instance=ExtResource("12_eemcn")]
-position = Vector2(1292, 275)
-
-[node name="Coin12" parent="Collectables" unique_id=1800445761 instance=ExtResource("12_eemcn")]
-position = Vector2(1248, 221)
-
-[node name="EndScreens" parent="." unique_id=1070660170 instance=ExtResource("13_njovb")]
-visible = false
+position = Vector2(25, 828)
 
 [connection signal="died" from="Wheel" to="EndScreens" method="defeat"]
 [connection signal="won" from="Wheel" to="EndScreens" method="victory"]

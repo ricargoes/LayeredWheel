@@ -1,0 +1,161 @@
+[gd_scene format=4 uid="uid://bwkgfbuoqca68"]
+
+[ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="1_rw7mv"]
+[ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="2_8o5am"]
+[ext_resource type="PackedScene" uid="uid://cgukodaqw7o2y" path="res://src/stage/coin.tscn" id="3_kldex"]
+[ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="4_f1dg3"]
+[ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="5_21drk"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
+scenes/1/scene = ExtResource("1_rw7mv")
+
+[sub_resource type="TileSet" id="TileSet_kvonq"]
+tile_size = Vector2i(256, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_53egh")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dotkg"]
+scenes/2/scene = ExtResource("2_8o5am")
+
+[sub_resource type="TileSet" id="TileSet_tnjnu"]
+tile_size = Vector2i(256, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_dotkg")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o0m02"]
+scenes/1/scene = ExtResource("3_kldex")
+
+[sub_resource type="TileSet" id="TileSet_3uoas"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetScenesCollectionSource_o0m02")
+
+[node name="TerrainChunkShelfs" type="Node2D" unique_id=546563796]
+
+[node name="Ground" type="Node2D" parent="." unique_id=1143587184]
+
+[node name="Ground" type="TileMapLayer" parent="Ground" unique_id=892012795]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQANAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQALAP//AAAAAAAAASAMAP//AAAAAAAAASANAP//AAAAAAAAASAOAP//AAAAAAAAASAPAP//AAAAAAAAASA=")
+tile_set = SubResource("TileSet_kvonq")
+
+[node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=1978931474]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgAHAAkAAAAAAAAAAgALAAkAAAAAAAAAAgAMAAkAAAAAAAAAAgANAAkAAAAAAAAAAgADAAEAAAAAAAAAAgADAAMAAAAAAAAAAgADAAUAAAAAAAAAAgADAAcAAAAAAAAAAgADAAkAAAAAAAAAAgADAAsAAAAAAAAAAgAAAAsAAAAAAAAAAgABAAsAAAAAAAAAAgACAAsAAAAAAAAAAgAEAAsAAAAAAAAAAgAFAAsAAAAAAAAAAgAGAAsAAAAAAAAAAgAHAAsAAAAAAAAAAgAIAAsAAAAAAAAAAgAJAAsAAAAAAAAAAgAKAAsAAAAAAAAAAgALAAsAAAAAAAAAAgAMAAsAAAAAAAAAAgANAAsAAAAAAAAAAgAOAAsAAAAAAAAAAgAPAAsAAAAAAAAAAgAPAAkAAAAAAAAAAgAOAAkAAAAAAAAAAgAKAAkAAAAAAAAAAgAJAAkAAAAAAAAAAgAIAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgACAAkAAAAAAAAAAgABAAkAAAAAAAAAAgAAAAkAAAAAAAAAAgAAAAcAAAAAAAAAAgABAAcAAAAAAAAAAgACAAcAAAAAAAAAAgAEAAcAAAAAAAAAAgAFAAcAAAAAAAAAAgAGAAcAAAAAAAAAAgAHAAcAAAAAAAAAAgAIAAcAAAAAAAAAAgAJAAcAAAAAAAAAAgAKAAcAAAAAAAAAAgALAAcAAAAAAAAAAgAMAAcAAAAAAAAAAgANAAcAAAAAAAAAAgAOAAcAAAAAAAAAAgAPAAcAAAAAAAAAAgAPAAUAAAAAAAAAAgAOAAUAAAAAAAAAAgANAAUAAAAAAAAAAgAMAAUAAAAAAAAAAgALAAUAAAAAAAAAAgAKAAUAAAAAAAAAAgAJAAUAAAAAAAAAAgAIAAUAAAAAAAAAAgAHAAUAAAAAAAAAAgAGAAUAAAAAAAAAAgAFAAUAAAAAAAAAAgAEAAUAAAAAAAAAAgACAAUAAAAAAAAAAgABAAUAAAAAAAAAAgAAAAUAAAAAAAAAAgAAAAMAAAAAAAAAAgABAAMAAAAAAAAAAgACAAMAAAAAAAAAAgAEAAMAAAAAAAAAAgAFAAMAAAAAAAAAAgAGAAMAAAAAAAAAAgAHAAMAAAAAAAAAAgAIAAMAAAAAAAAAAgAJAAMAAAAAAAAAAgAKAAMAAAAAAAAAAgALAAMAAAAAAAAAAgAMAAMAAAAAAAAAAgANAAMAAAAAAAAAAgAOAAMAAAAAAAAAAgAPAAMAAAAAAAAAAgAPAAEAAAAAAAAAAgAOAAEAAAAAAAAAAgANAAEAAAAAAAAAAgAMAAEAAAAAAAAAAgALAAEAAAAAAAAAAgAKAAEAAAAAAAAAAgAJAAEAAAAAAAAAAgAIAAEAAAAAAAAAAgAHAAEAAAAAAAAAAgAGAAEAAAAAAAAAAgAFAAEAAAAAAAAAAgAEAAEAAAAAAAAAAgACAAEAAAAAAAAAAgABAAEAAAAAAAAAAgAAAAEAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_tnjnu")
+
+[node name="Coins" type="TileMapLayer" parent="Ground" unique_id=1999850615]
+tile_map_data = PackedByteArray("AAAbABAAAAAAAAAAAQAcABAAAAAAAAAAAQAdAA0AAAAAAAAAAQAeAA0AAAAAAAAAAQAfAAoAAAAAAAAAAQAgAAoAAAAAAAAAAQAhAAcAAAAAAAAAAQAiAAcAAAAAAAAAAQAjAAUAAAAAAAAAAQAkAAUAAAAAAAAAAQAlAAIAAAAAAAAAAQAmAAIAAAAAAAAAAQAnAAIAAAAAAAAAAQAoAAIAAAAAAAAAAQApAAIAAAAAAAAAAQAqAAIAAAAAAAAAAQArAAIAAAAAAAAAAQAsAAIAAAAAAAAAAQAtAAUAAAAAAAAAAQAuAAUAAAAAAAAAAQAvAAcAAAAAAAAAAQAwAAcAAAAAAAAAAQAxAAoAAAAAAAAAAQAyAAoAAAAAAAAAAQAzAA0AAAAAAAAAAQA0AA0AAAAAAAAAAQA1ABAAAAAAAAAAAQA2ABAAAAAAAAAAAQA3AA0AAAAAAAAAAQA4AA0AAAAAAAAAAQA5AAoAAAAAAAAAAQA6AAoAAAAAAAAAAQA8AAgAAAAAAAAAAQA9AAgAAAAAAAAAAQA+AAUAAAAAAAAAAQA/AAUAAAAAAAAAAQBAAAIAAAAAAAAAAQBBAAIAAAAAAAAAAQBCAAIAAAAAAAAAAQBDAAIAAAAAAAAAAQBEAAIAAAAAAAAAAQBFAAIAAAAAAAAAAQBGAAIAAAAAAAAAAQBHAAIAAAAAAAAAAQBIAAUAAAAAAAAAAQBJAAUAAAAAAAAAAQBKAAgAAAAAAAAAAQBLAAgAAAAAAAAAAQBMAAoAAAAAAAAAAQBNAAoAAAAAAAAAAQBOAA0AAAAAAAAAAQBPAA0AAAAAAAAAAQBQABAAAAAAAAAAAQBRABAAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_3uoas")
+
+[node name="Puddles" type="Node2D" parent="." unique_id=1733821019]
+
+[node name="Puddle" parent="Puddles" unique_id=1725656556 instance=ExtResource("4_f1dg3")]
+position = Vector2(1919, 356)
+
+[node name="Puddle5" parent="Puddles" unique_id=1137999608 instance=ExtResource("4_f1dg3")]
+position = Vector2(2984, 898)
+type = 5
+
+[node name="Puddle6" parent="Puddles" unique_id=1149475356 instance=ExtResource("4_f1dg3")]
+position = Vector2(663, 984)
+
+[node name="Puddle7" parent="Puddles" unique_id=1239055219 instance=ExtResource("4_f1dg3")]
+position = Vector2(955, 989)
+
+[node name="Puddle2" parent="Puddles" unique_id=309939933 instance=ExtResource("4_f1dg3")]
+position = Vector2(336, 988)
+type = 2
+
+[node name="Puddle3" parent="Puddles" unique_id=1368640561 instance=ExtResource("4_f1dg3")]
+position = Vector2(1919, 676)
+type = 3
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1392244641]
+
+[node name="FlyingEnemy" parent="Enemies" unique_id=1251470486 instance=ExtResource("5_21drk")]
+position = Vector2(2345, 910)
+
+[node name="FlyingEnemy2" parent="Enemies" unique_id=1164655895 instance=ExtResource("5_21drk")]
+position = Vector2(2475, 255)
+
+[node name="FlyingEnemy9" parent="Enemies" unique_id=527522406 instance=ExtResource("5_21drk")]
+position = Vector2(2475, 255)
+
+[node name="FlyingEnemy10" parent="Enemies" unique_id=198135712 instance=ExtResource("5_21drk")]
+position = Vector2(2912, 391)
+
+[node name="FlyingEnemy11" parent="Enemies" unique_id=17683238 instance=ExtResource("5_21drk")]
+position = Vector2(2518, 510)
+
+[node name="FlyingEnemy7" parent="Enemies" unique_id=2135790480 instance=ExtResource("5_21drk")]
+position = Vector2(1155, 772)
+
+[node name="FlyingEnemy8" parent="Enemies" unique_id=362911381 instance=ExtResource("5_21drk")]
+position = Vector2(864, 505)
+
+[node name="FlyingEnemy3" parent="Enemies" unique_id=1313656285 instance=ExtResource("5_21drk")]
+position = Vector2(3560, 388)
+
+[node name="FlyingEnemy4" parent="Enemies" unique_id=1334415633 instance=ExtResource("5_21drk")]
+position = Vector2(1429, 643)
+
+[node name="FlyingEnemy5" parent="Enemies" unique_id=850893064 instance=ExtResource("5_21drk")]
+position = Vector2(1227, 140)
+
+[node name="FlyingEnemy6" parent="Enemies" unique_id=2023539844 instance=ExtResource("5_21drk")]
+position = Vector2(2974, 652)
+
+[node name="Hazards" type="Node2D" parent="." unique_id=1099794077]
+
+[connection signal="body_entered" from="Ground/Coins/Coin" to="Ground/Coins/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134547" to="Ground/Coins/@Area2D@134547" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134552" to="Ground/Coins/@Area2D@134552" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134553" to="Ground/Coins/@Area2D@134553" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134554" to="Ground/Coins/@Area2D@134554" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134555" to="Ground/Coins/@Area2D@134555" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134556" to="Ground/Coins/@Area2D@134556" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134557" to="Ground/Coins/@Area2D@134557" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134558" to="Ground/Coins/@Area2D@134558" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134559" to="Ground/Coins/@Area2D@134559" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134560" to="Ground/Coins/@Area2D@134560" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134561" to="Ground/Coins/@Area2D@134561" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134562" to="Ground/Coins/@Area2D@134562" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134563" to="Ground/Coins/@Area2D@134563" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134564" to="Ground/Coins/@Area2D@134564" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134565" to="Ground/Coins/@Area2D@134565" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134566" to="Ground/Coins/@Area2D@134566" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134567" to="Ground/Coins/@Area2D@134567" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134569" to="Ground/Coins/@Area2D@134569" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134570" to="Ground/Coins/@Area2D@134570" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134571" to="Ground/Coins/@Area2D@134571" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134572" to="Ground/Coins/@Area2D@134572" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134573" to="Ground/Coins/@Area2D@134573" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134574" to="Ground/Coins/@Area2D@134574" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134575" to="Ground/Coins/@Area2D@134575" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134576" to="Ground/Coins/@Area2D@134576" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134577" to="Ground/Coins/@Area2D@134577" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134578" to="Ground/Coins/@Area2D@134578" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134579" to="Ground/Coins/@Area2D@134579" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134580" to="Ground/Coins/@Area2D@134580" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134581" to="Ground/Coins/@Area2D@134581" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134582" to="Ground/Coins/@Area2D@134582" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134583" to="Ground/Coins/@Area2D@134583" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134584" to="Ground/Coins/@Area2D@134584" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134585" to="Ground/Coins/@Area2D@134585" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134586" to="Ground/Coins/@Area2D@134586" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134587" to="Ground/Coins/@Area2D@134587" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134588" to="Ground/Coins/@Area2D@134588" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134589" to="Ground/Coins/@Area2D@134589" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134590" to="Ground/Coins/@Area2D@134590" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134591" to="Ground/Coins/@Area2D@134591" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134592" to="Ground/Coins/@Area2D@134592" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134593" to="Ground/Coins/@Area2D@134593" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134594" to="Ground/Coins/@Area2D@134594" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134595" to="Ground/Coins/@Area2D@134595" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134596" to="Ground/Coins/@Area2D@134596" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134597" to="Ground/Coins/@Area2D@134597" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134598" to="Ground/Coins/@Area2D@134598" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134599" to="Ground/Coins/@Area2D@134599" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134600" to="Ground/Coins/@Area2D@134600" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134601" to="Ground/Coins/@Area2D@134601" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134602" to="Ground/Coins/@Area2D@134602" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134605" to="Ground/Coins/@Area2D@134605" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@134606" to="Ground/Coins/@Area2D@134606" method="_on_body_entered"]

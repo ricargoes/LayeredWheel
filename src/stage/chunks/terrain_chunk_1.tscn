@@ -1,0 +1,125 @@
+[gd_scene format=4 uid="uid://2kwc0ji01nth"]
+
+[ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="1_ufobq"]
+[ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="2_0s8a1"]
+[ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="3_ok2e6"]
+[ext_resource type="PackedScene" uid="uid://b7k5eyanfhixp" path="res://src/characters/standing_enemy.tscn" id="4_yoadr"]
+[ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="5_0mecd"]
+[ext_resource type="PackedScene" uid="uid://bp1nqua6noncu" path="res://src/stage/plasma_barrier.tscn" id="6_158hp"]
+[ext_resource type="PackedScene" uid="uid://cb3jsm0lixdhb" path="res://src/stage/switch.tscn" id="7_8xaw6"]
+[ext_resource type="PackedScene" uid="uid://b0ybvbdp0bwj5" path="res://src/stage/glass_door.tscn" id="8_kmqh1"]
+[ext_resource type="PackedScene" uid="uid://cgukodaqw7o2y" path="res://src/stage/coin.tscn" id="9_wl5wg"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
+scenes/1/scene = ExtResource("1_ufobq")
+
+[sub_resource type="TileSet" id="TileSet_kvonq"]
+tile_size = Vector2i(256, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_53egh")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dotkg"]
+scenes/2/scene = ExtResource("2_0s8a1")
+
+[sub_resource type="TileSet" id="TileSet_tnjnu"]
+tile_size = Vector2i(256, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_dotkg")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o0m02"]
+scenes/1/scene = ExtResource("9_wl5wg")
+
+[sub_resource type="TileSet" id="TileSet_3uoas"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetScenesCollectionSource_o0m02")
+
+[node name="TerrainChunk1" type="Node2D" unique_id=546563796]
+
+[node name="Ground" type="Node2D" parent="." unique_id=1143587184]
+
+[node name="Ground" type="TileMapLayer" parent="Ground" unique_id=892012795]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQANAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQALAP//AAAAAAAAASAMAP//AAAAAAAAASANAP//AAAAAAAAASAOAP//AAAAAAAAASAPAP//AAAAAAAAASA=")
+tile_set = SubResource("TileSet_kvonq")
+
+[node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=1978931474]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAABAAkAAAAAAAAAAgACAAkAAAAAAAAAAgADAAkAAAAAAAAAAgAEAAkAAAAAAAAAAgAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgABAAQAAAAAAAAAAgACAAQAAAAAAAAAAgADAAQAAAAAAAAAAgAEAAQAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgAIAAQAAAAAAAAAAgAJAAQAAAAAAAAAAgAKAAQAAAAAAAAAAgAHAAkAAAAAAAAAAgAIAAkAAAAAAAAAAgAJAAkAAAAAAAAAAgALAAQAAAAAAAAAAgAMAAQAAAAAAAAAAgANAAQAAAAAAAAAAgAOAAQAAAAAAAAAAgAPAAQAAAAAAAAAAgAKAAkAAAAAAAAAAgALAAkAAAAAAAAAAgAMAAkAAAAAAAAAAgANAAkAAAAAAAAAAgAOAAkAAAAAAAAAAgAPAAkAAAAAAAAAAgAAAAkAAAAAAAAAAgAAAAQAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_tnjnu")
+
+[node name="Coins" type="TileMapLayer" parent="Ground" unique_id=1999850615]
+tile_map_data = PackedByteArray("AAAYAAUAAAAAAAAAAQAZAAQAAAAAAAAAAQAaAAUAAAAAAAAAAQAIAAwAAAAAAAAAAQAJAAoAAAAAAAAAAQAKAAwAAAAAAAAAAQAPAAQAAAAAAAAAAQAdABIAAAAAAAAAAQAvAAQAAAAAAAAAAQAuAAUAAAAAAAAAAQAvAAMAAAAAAAAAAQAvABEAAAAAAAAAAQAuABIAAAAAAAAAAQAvABAAAAAAAAAAAQAYAAwAAAAAAAAAAQAZAAsAAAAAAAAAAQAaAAwAAAAAAAAAAQBMABIAAAAAAAAAAQBNABEAAAAAAAAAAQBNABAAAAAAAAAAAQBHAAUAAAAAAAAAAQBIAAUAAAAAAAAAAQBBABIAAAAAAAAAAQBCABIAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_3uoas")
+
+[node name="Puddles" type="Node2D" parent="." unique_id=1733821019]
+
+[node name="Puddle" parent="Puddles" unique_id=1725656556 instance=ExtResource("3_ok2e6")]
+position = Vector2(495, 990)
+
+[node name="Puddle5" parent="Puddles" unique_id=1137999608 instance=ExtResource("3_ok2e6")]
+position = Vector2(1534, 563)
+type = 5
+
+[node name="Puddle6" parent="Puddles" unique_id=1149475356 instance=ExtResource("3_ok2e6")]
+position = Vector2(3225, 676)
+
+[node name="Puddle2" parent="Puddles" unique_id=309939933 instance=ExtResource("3_ok2e6")]
+position = Vector2(1826, 994)
+type = 2
+
+[node name="Puddle4" parent="Puddles" unique_id=911498180 instance=ExtResource("3_ok2e6")]
+position = Vector2(2344, 579)
+type = 4
+
+[node name="Puddle3" parent="Puddles" unique_id=1368640561 instance=ExtResource("3_ok2e6")]
+position = Vector2(1020, 990)
+type = 3
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1392244641]
+
+[node name="StandingEnemy" parent="Enemies" unique_id=527522406 instance=ExtResource("4_yoadr")]
+position = Vector2(3817, 229)
+
+[node name="FlyingEnemy" parent="Enemies" unique_id=1251470486 instance=ExtResource("5_0mecd")]
+position = Vector2(3315, 896)
+
+[node name="FlyingEnemy2" parent="Enemies" unique_id=1164655895 instance=ExtResource("5_0mecd")]
+position = Vector2(3269, 254)
+
+[node name="Hazards" type="Node2D" parent="." unique_id=1099794077]
+
+[node name="PlasmaBarrier" parent="Hazards" unique_id=1195784503 instance=ExtResource("6_158hp")]
+position = Vector2(2352, 354)
+
+[node name="Switch" parent="Hazards" unique_id=1885685938 node_paths=PackedStringArray("connected_actuator") instance=ExtResource("7_8xaw6")]
+position = Vector2(1924, 259)
+connected_actuator = NodePath("../PlasmaBarrier")
+
+[node name="GlassDoor" parent="Hazards" unique_id=433117945 instance=ExtResource("8_kmqh1")]
+position = Vector2(2354, 990)
+
+[node name="GlassDoor2" parent="Hazards" unique_id=811301450 instance=ExtResource("8_kmqh1")]
+position = Vector2(3790, 989)
+
+[connection signal="body_entered" from="Ground/Coins/@Area2D@68659" to="Ground/Coins/@Area2D@68659" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@68660" to="Ground/Coins/@Area2D@68660" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@68661" to="Ground/Coins/@Area2D@68661" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70364" to="Ground/Coins/@Area2D@70364" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70365" to="Ground/Coins/@Area2D@70365" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70366" to="Ground/Coins/@Area2D@70366" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70367" to="Ground/Coins/@Area2D@70367" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70368" to="Ground/Coins/@Area2D@70368" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70371" to="Ground/Coins/@Area2D@70371" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70373" to="Ground/Coins/@Area2D@70373" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70374" to="Ground/Coins/@Area2D@70374" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70377" to="Ground/Coins/@Area2D@70377" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70378" to="Ground/Coins/@Area2D@70378" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70379" to="Ground/Coins/@Area2D@70379" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70385" to="Ground/Coins/@Area2D@70385" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70386" to="Ground/Coins/@Area2D@70386" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@70387" to="Ground/Coins/@Area2D@70387" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/Coin" to="Ground/Coins/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74439" to="Ground/Coins/@Area2D@74439" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74440" to="Ground/Coins/@Area2D@74440" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74446" to="Ground/Coins/@Area2D@74446" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74447" to="Ground/Coins/@Area2D@74447" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74454" to="Ground/Coins/@Area2D@74454" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@74455" to="Ground/Coins/@Area2D@74455" method="_on_body_entered"]

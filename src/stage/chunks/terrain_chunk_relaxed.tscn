@@ -1,0 +1,87 @@
+[gd_scene format=4 uid="uid://dyun41jjgygjd"]
+
+[ext_resource type="PackedScene" uid="uid://cldc2sj2li4cn" path="res://src/stage/ground.tscn" id="1_esymg"]
+[ext_resource type="PackedScene" uid="uid://paasf2u0keqv" path="res://src/stage/platform.tscn" id="2_tp508"]
+[ext_resource type="PackedScene" uid="uid://cgukodaqw7o2y" path="res://src/stage/coin.tscn" id="3_xo1ss"]
+[ext_resource type="PackedScene" uid="uid://bkimcg61o4n8h" path="res://src/stage/elemental_source.tscn" id="4_8ed1q"]
+[ext_resource type="PackedScene" uid="uid://bkttgdticlx82" path="res://src/characters/flying_enemy.tscn" id="6_pey3b"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_53egh"]
+scenes/1/scene = ExtResource("1_esymg")
+
+[sub_resource type="TileSet" id="TileSet_kvonq"]
+tile_size = Vector2i(256, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_53egh")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dotkg"]
+scenes/2/scene = ExtResource("2_tp508")
+
+[sub_resource type="TileSet" id="TileSet_tnjnu"]
+tile_size = Vector2i(256, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_dotkg")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_o0m02"]
+scenes/1/scene = ExtResource("3_xo1ss")
+
+[sub_resource type="TileSet" id="TileSet_3uoas"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetScenesCollectionSource_o0m02")
+
+[node name="TerrainChunkRelaxed" type="Node2D" unique_id=546563796]
+
+[node name="Ground" type="Node2D" parent="." unique_id=1143587184]
+
+[node name="Ground" type="TileMapLayer" parent="Ground" unique_id=892012795]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAASABAP//AAAAAAAAASACAP//AAAAAAAAASADAP//AAAAAAAAASAEAP//AAAAAAAAASAFAP//AAAAAAAAASAGAP//AAAAAAAAASAHAP//AAAAAAAAASAIAP//AAAAAAAAASAGAAcAAAAAAAAAAQAHAAcAAAAAAAAAAQAIAAcAAAAAAAAAAQAAAAcAAAAAAAAAAQAFAAcAAAAAAAAAAQAEAAcAAAAAAAAAAQADAAcAAAAAAAAAAQAJAAcAAAAAAAAAAQABAAcAAAAAAAAAAQACAAcAAAAAAAAAAQAJAP//AAAAAAAAASAKAP//AAAAAAAAASAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQAMAAcAAAAAAAAAAQANAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQALAP//AAAAAAAAASAMAP//AAAAAAAAASANAP//AAAAAAAAASAOAP//AAAAAAAAASAPAP//AAAAAAAAASA=")
+tile_set = SubResource("TileSet_kvonq")
+
+[node name="Platforms" type="TileMapLayer" parent="Ground" unique_id=1978931474]
+position = Vector2(0, 100)
+tile_map_data = PackedByteArray("AAAFAAkAAAAAAAAAAgAGAAkAAAAAAAAAAgAFAAQAAAAAAAAAAgAGAAQAAAAAAAAAAgAHAAQAAAAAAAAAAgAHAAkAAAAAAAAAAgALAAQAAAAAAAAAAgAMAAQAAAAAAAAAAgANAAQAAAAAAAAAAgALAAkAAAAAAAAAAgAMAAkAAAAAAAAAAgANAAkAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_tnjnu")
+
+[node name="Coins" type="TileMapLayer" parent="Ground" unique_id=1999850615]
+tile_map_data = PackedByteArray("AAAJABEAAAAAAAAAAQAMAA8AAAAAAAAAAQAPABEAAAAAAAAAAQASAA8AAAAAAAAAAQAVABEAAAAAAAAAAQAYAA8AAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_3uoas")
+
+[node name="Puddles" type="Node2D" parent="." unique_id=1733821019]
+
+[node name="Puddle" parent="Puddles" unique_id=1725656556 instance=ExtResource("4_8ed1q")]
+position = Vector2(1919, 356)
+
+[node name="Puddle5" parent="Puddles" unique_id=1137999608 instance=ExtResource("4_8ed1q")]
+position = Vector2(3440, 615)
+type = 5
+
+[node name="Puddle6" parent="Puddles" unique_id=1149475356 instance=ExtResource("4_8ed1q")]
+position = Vector2(3452, 985)
+
+[node name="Puddle2" parent="Puddles" unique_id=309939933 instance=ExtResource("4_8ed1q")]
+position = Vector2(1919, 978)
+type = 2
+
+[node name="Puddle4" parent="Puddles" unique_id=911498180 instance=ExtResource("4_8ed1q")]
+position = Vector2(3459, 261)
+type = 4
+
+[node name="Puddle3" parent="Puddles" unique_id=1368640561 instance=ExtResource("4_8ed1q")]
+position = Vector2(1919, 676)
+type = 3
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1392244641]
+
+[node name="FlyingEnemy" parent="Enemies" unique_id=1251470486 instance=ExtResource("6_pey3b")]
+position = Vector2(2345, 910)
+
+[node name="FlyingEnemy2" parent="Enemies" unique_id=1164655895 instance=ExtResource("6_pey3b")]
+position = Vector2(2425, 276)
+
+[node name="Hazards" type="Node2D" parent="." unique_id=1099794077]
+
+[connection signal="body_entered" from="Ground/Coins/Coin" to="Ground/Coins/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@115668" to="Ground/Coins/@Area2D@115668" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@115669" to="Ground/Coins/@Area2D@115669" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@115670" to="Ground/Coins/@Area2D@115670" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@115671" to="Ground/Coins/@Area2D@115671" method="_on_body_entered"]
+[connection signal="body_entered" from="Ground/Coins/@Area2D@115672" to="Ground/Coins/@Area2D@115672" method="_on_body_entered"]

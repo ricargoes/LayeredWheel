@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l0svrmegebof"]
 
 [ext_resource type="Script" uid="uid://dse5ouf22fxk8" path="res://src/ui/ui.gd" id="1_qemve"]
-[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="2_jlntk"]
+[ext_resource type="Texture2D" uid="uid://uok7w58u8inh" path="res://assets/sprites/icono_monedaa.png" id="2_jlntk"]
 
 [node name="UI" type="CanvasLayer" unique_id=880718439]
 script = ExtResource("1_qemve")
@@ -22,12 +22,13 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 100.0
 grow_horizontal = 0
-theme_override_constants/separation = 40
 
 [node name="TextureRect" type="TextureRect" parent="Points" unique_id=525324914]
 self_modulate = Color(0.71014214, 0.3973866, 0.006385603, 1)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_jlntk")
+expand_mode = 3
 
 [node name="Score" type="Label" parent="Points" unique_id=856031370]
 unique_name_in_owner = true

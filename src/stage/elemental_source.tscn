@@ -2,9 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_85gyl"]
 [ext_resource type="Script" uid="uid://n1fk3s238oc3" path="res://src/stage/elemental_source.gd" id="1_vfntf"]
+[ext_resource type="Texture2D" uid="uid://ndw012k1x0lk" path="res://assets/sprites/charco_aceite.png" id="3_h2sh7"]
+[ext_resource type="Texture2D" uid="uid://7208jsynepkw" path="res://assets/sprites/charco.png" id="3_lk3o1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85gyl"]
-size = Vector2(192, 20)
+size = Vector2(454, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
 animations = [{
@@ -34,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_85gyl")
+"texture": ExtResource("3_h2sh7")
 }],
 "loop": 0,
 "name": &"oil",
@@ -42,7 +44,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_85gyl")
+"texture": ExtResource("3_lk3o1")
 }],
 "loop": 0,
 "name": &"water",
@@ -57,9 +59,8 @@ script = ExtResource("1_vfntf")
 shape = SubResource("RectangleShape2D_85gyl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2024253618]
-position = Vector2(0, 20.000004)
-scale = Vector2(1.5, 0.4)
+scale = Vector2(1, 0.6)
 sprite_frames = SubResource("SpriteFrames_kvonq")
-animation = &"gravel"
+animation = &"water"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

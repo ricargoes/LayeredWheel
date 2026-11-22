@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://kiwumhgi8ubk" path="res://assets/sprites/personaje.png" id="2_3fmbn"]
 [ext_resource type="PackedScene" uid="uid://l0svrmegebof" path="res://src/ui/ui.tscn" id="3_3fmbn"]
 [ext_resource type="Texture2D" uid="uid://blp4pent1cod3" path="res://assets/sprites/bola.png" id="3_jmtn7"]
+[ext_resource type="Texture2D" uid="uid://ceorjt7s81jmp" path="res://assets/sprites/electricidad.png" id="4_0q82e"]
 [ext_resource type="Texture2D" uid="uid://be5ayhogo1xyb" path="res://assets/sprites/fuego.png" id="4_vbxy3"]
 [ext_resource type="Texture2D" uid="uid://bphdofdy46a4w" path="res://assets/sprites/agua.png" id="5_0q82e"]
+[ext_resource type="Texture2D" uid="uid://bq7krn3njpd0e" path="res://assets/sprites/aceite.png" id="6_6ruwk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvonq"]
 animations = [{
@@ -60,7 +62,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jmtn7")
+"texture": ExtResource("4_0q82e")
 }],
 "loop": 1,
 "name": &"electricity_layer",
@@ -92,7 +94,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jmtn7")
+"texture": ExtResource("6_6ruwk")
 }],
 "loop": 1,
 "name": &"oil_layer",
@@ -132,13 +134,13 @@ shape = SubResource("RectangleShape2D_xlegt")
 [node name="InnerLayerSprite" type="AnimatedSprite2D" parent="Layers" unique_id=1965804074]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4ndvc")
-animation = &"fire_layer"
+animation = &"electricity_layer"
 autoplay = "air_layer"
 
 [node name="OuterLayerSprite" type="AnimatedSprite2D" parent="Layers" unique_id=1862223682]
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_4ndvc")
-animation = &"electricity_layer"
+animation = &"air_layer"
 autoplay = "air_layer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Layers" unique_id=1763840296]

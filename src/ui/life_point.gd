@@ -1,6 +1,6 @@
 extends TextureRect
 
-var full_point_texture = preload("res://icon.svg")
+var full_point_texture = preload("res://assets/sprites/icono_corazon.png")
 var empty_point_texture = null
 
 func lose_point() -> void:

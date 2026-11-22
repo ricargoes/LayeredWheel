@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bv3tlhj53okwr"]
 
-[ext_resource type="Texture2D" uid="uid://djpb8v3usvygg" path="res://icon.svg" id="1_hlmkc"]
+[ext_resource type="Texture2D" uid="uid://dg6sfougdblo4" path="res://assets/sprites/icono_corazon.png" id="1_5l1up"]
 [ext_resource type="Script" uid="uid://bthrpimh1sbw7" path="res://src/ui/life_point.gd" id="2_5l1up"]
 
 [node name="LifePoint" type="TextureRect" unique_id=1055001713]
-texture = ExtResource("1_hlmkc")
+custom_minimum_size = Vector2(150, 150)
+texture = ExtResource("1_5l1up")
+expand_mode = 3
 script = ExtResource("2_5l1up")

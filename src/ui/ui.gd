@@ -13,7 +13,7 @@ func sync_life(life_points, max_life_points) -> void:
 	var lifepoints_objects = %Health.get_children()
 	for i in range(life_points):
 		lifepoints_objects[i].get_point()
-	for i in range(max_life_points - life_points):
+	for i in range(life_points, max_life_points):
 		lifepoints_objects[i].lose_point()
 
 func sync_points(points: int) -> void:
